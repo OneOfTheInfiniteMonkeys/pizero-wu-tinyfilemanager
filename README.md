@@ -8,7 +8,7 @@
 
 > Based on TinyFileManager by prasathmani, PiZero-WU TinyFileManager is simple web based file manager that is a fast and small file manager with a single file, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+, It allows the creation of multiple users and each user can have its own directory and a build-in support for managing text files with cloud9 IDE and it supports syntax highlighting for over 150+ languages and over 35+ themes.
 
-The PiZero-WU fork includes specific extensions to permit viewing of special file types rendered by a fork of pyembrodery.
+>The PiZero-WU fork includes specific extensions to permit viewing of special file types rendered by a fork of pyembrodery and configuration specific to PiZero-Wu.
 
 ## Demo
 [Demo](https://pizero-wu-tinyfilemanager.github.io/demo/)
@@ -29,11 +29,11 @@ Tinyfilemanager is highly documented on the [wiki pages](https://github.com/oneo
 - pyemroidery fork
 
 ## How to use
+Installation is managed by PiZero-Wu installer, for individual install.
 
-Download ZIP with latest version from master branch.
+Download the ZIP containing the latest version from master branch.
 
 Just copy the tinyfilemanager.php to your webspace - thats all :)
-You can also change the file name from "tinyfilemanager.php" to something else, you know what i meant for.
 
 Default username/password: **admin/admin@123** and **user/12345**.
 
