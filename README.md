@@ -53,7 +53,7 @@ d) Create the temporary folder:
    sudo mkdir tmp
 ```
 
-To install the pyembroidery viewer use the following commands:
+To install the pyembroidery viewer use the following commands for Python version 3 and a raspberry pi:
 ```
 a) sudo cd /home/pi/
 b) sudo pip3 install pyembroidery
