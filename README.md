@@ -52,6 +52,14 @@ d) Create the temporary folder:
    cd /var/www/html/tinyfilemanager
    sudo mkdir tmp
 ```
+e) Create link to files to be shared
+```
+   Create a link in the Tiny File Manager Folder to the files to be accessed by TinyFileManager.
+   If the files are located at '/mnt/usb_share' 
+   Typically:
+   cd /var/www/html/tinyfilemanager
+   sudo ln -s /mnt/usb_share usb
+```
 
 To install the pyembroidery viewer use the following commands for Python version 3 and a raspberry pi:
 ```
