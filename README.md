@@ -8,7 +8,7 @@
 
 > Based on TinyFileManager by prasathmani, PiZero-WU TinyFileManager is simple web based file manager that is a fast and small multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
 
->The Tiny File Manager PiZero-WU fork includes extensions and code to permit viewing of special file types rendered by an additional support routine pyembrodery and configuration specific fetaures foe PiZero-WU.
+>The Tiny File Manager PiZero-WU fork includes extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures foe PiZero-WU.
 
 ## Demo
 [Demo](https://pizero-wu-tinyfilemanager.github.io/demo/)
