@@ -6,9 +6,9 @@
 [![GitHub Release](https://img.shields.io/github/v/release/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager?include_prereleases)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/releases)
  [![GitHub License](https://img.shields.io/github/license/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/blob/master/LICENSE) 
 
-> Based on TinyFileManager by prasathmani, PiZero-WU TinyFileManager is simple web based file manager that is a fast and small multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
+> Based on TinyFileManager by prasathmani, **PiZero-WU TinyFileManager** is simple web based file manager that is fast, small, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
 
->The Tiny File Manager PiZero-WU fork includes extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures foe PiZero-WU.
+>The Tiny File Manager PiZero-WU fork includes settings, extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures for PiZero-WU.
 
 ## Demo
 [Demo](https://pizero-wu-tinyfilemanager.github.io/demo/)
