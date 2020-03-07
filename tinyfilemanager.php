@@ -9,7 +9,7 @@
 // Easiest route to locate modifications from master in this fork - search for '// ***'
 // Search for 'is_sewing' to locate modified code sections
 // 
-// Modified default time and date format to yyyy/mm/dd hh:mm i.e. largest to smallest
+// Modified default time and date format to yyyy/mm/dd hh:mm i.e. largest to smallest in file view
 // Modified default hide_Cols from false to true so permissions and user:group not shown
 // Default app title changed
 // Default file paths set 
