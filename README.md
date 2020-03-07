@@ -6,9 +6,9 @@
 [![GitHub Release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/releases)
  [![GitHub License](https://img.shields.io/github/license/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/blob/master/LICENSE) 
 
-> Based on TinyFileManager by prasathmani, PiZero-WU TinyFileManager is simple web based file manager that is a fast and small file manager with a single file, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+, It allows the creation of multiple users and each user can have its own directory and a build-in support for managing text files with cloud9 IDE and it supports syntax highlighting for over 150+ languages and over 35+ themes.
+> Based on TinyFileManager by prasathmani, PiZero-WU TinyFileManager is simple web based file manager that is a fast and small multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
 
->The PiZero-WU fork includes specific extensions to permit viewing of special file types rendered by a fork of pyembrodery and configuration specific to PiZero-Wu.
+>The Tiny File Manager PiZero-WU fork includes extensions and code to permit viewing of special file types rendered by an additional support routine pyembrodery and configuration specific fetaures foe PiZero-WU.
 
 ## Demo
 [Demo](https://pizero-wu-tinyfilemanager.github.io/demo/)
@@ -25,11 +25,11 @@ Tinyfilemanager is highly documented on the [wiki pages](https://github.com/oneo
 ## Requirements
 
 - PHP 5.5.0 or higher.
+- pyemroidery
 - Fileinfo, iconv, zip, tar and mbstring extensions are strongly recommended.
-- pyemroidery fork
 
 ## How to use
-Installation is managed by PiZero-Wu installer, for individual install.
+Installation is managed by PiZero-Wu installer, for individual install:
 
 Download the ZIP containing the latest version from master branch.
 
