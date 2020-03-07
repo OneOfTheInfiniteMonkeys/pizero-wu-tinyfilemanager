@@ -6,7 +6,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager?include_prereleases)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/releases)
  [![GitHub License](https://img.shields.io/github/license/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/blob/master/LICENSE) 
 
-> Based on TinyFileManager by prasathmani, **PiZero-WU TinyFileManager** is simple web based file manager that is fast, small, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
+> Based on TinyFileManager by prasathmani, **PiZero-WU TinyFileManager** is simple web based file manager that is a small, fast, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
 
 >The Tiny File Manager PiZero-WU fork includes settings, extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures for PiZero-WU.
 
@@ -31,13 +31,49 @@ Tinyfilemanager is highly documented on the [wiki pages](https://github.com/oneo
 ## How to use
 Installation is managed by PiZero-Wu installer.
 
-For individual install:
+For manual install:
 
-Download the ZIP containing the latest version from master branch.
+a) Download the ZIP containing the latest version from master branch.
 
-Just copy the tinyfilemanager.php to your webspace - thats all :)
+
+b) Unzip the files into a folder in your webspace
+
+
+c) Check:
+   $root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb';
+   
+   set root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
+   
+   $root_url = '/tinyfilemanager/usb';
+
+
+d) Create the temporary folder:
+
+   typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software
+   
+   e.g. 
+   
+   cd /var/www/html/tinyfilemanager
+   
+   sudo mkdir tmp
+
+
+To install the pyembroidery viewer use the following commands:
+
+a) sudo cd /home/pi/
+
+b) sudo pip3 install pyembroidery
+
+
+### Passwords
+
+In test versions the authentication default is set to false. i.e. no passwords are required.
+
+New passwords are set by using https://tinyfilemanager.github.io/docs/pwd.html to generate a hash. The hash is stored in the arrray "auth_users" which also defines the names. The defaults are:
 
 Default username/password: **admin/admin@123** and **user/12345**.
+
+To add or change the user names and passwords, the array $auth_users must be edited.
 
 :warning: Warning: Please set your own username and password in `$auth_users` before use. password is encrypted with <code>password_hash()</code>. to generate new password hash [here](https://tinyfilemanager.github.io/docs/pwd.html)
 
