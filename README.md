@@ -72,6 +72,6 @@ To enable/disable authentication set `$use_auth` to true or false.
 - [Contributors](https://github.com/prasathmani/tinyfilemanager/wiki/Authors-and-Contributors)
 
 ### Attribution
-[![Paypal](https://img.shields.io/badge/Donate-Paypal-lightgrey.svg?style=flat-square)](https://www.paypal.me/prasathmani) - Donations to the author of the master branch author
+[![Paypal](https://img.shields.io/badge/Donate-Paypal-lightgrey.svg?style=flat-square)](https://www.paypal.me/prasathmani) - Donations to the author of the upstream master.
 
-Donations to the fork author - None
+Donations to this fork author - None
