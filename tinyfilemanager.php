@@ -1,28 +1,53 @@
 <?php
+//-------><--------><--------><--------><--------><--------><--------><-------->
+// Modified to support sewing file rendering by local python script pyembroidery
+//
+// 2020-03-07 - GitHub test version
+// 2020-02-25 - Upgrade fork from master version 2.4.1
+// 2020-01-01 - OneOfTheInfiniteMonkeys fork
+// 
+// Easiest route to locate modifications from master in this fork - search for '// ***'
+// Search for 'is_sewing' to locate modified code sections
+// 
+// Modified default time and date format to yyyy/mm/dd hh:mm i.e. largest to smallest
+// Modified default hide_Cols from false to true so permissions and user:group not shown
+// Default app title changed
+// Default file paths set 
+//
+// For rendering of sewing files the following are required:
+//   Script:
+//   /home/pi/pyembroidery/pyembroidery-convert.py
+//   Folder - read write access:
+//   ./tmp/ebi.svg'
+//
+//------------------------------------------------------------------------------
+
 //Default Configuration
-$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":false,"calc_folder":false}';
+$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":true,"calc_folder":false}'; // ***
 
 /**
+ * PiZero-WU | Tiny File Manager V0.0.1
+ * oneoftheinfinitemonkeys@gmail.com
+ * https://pizero-wu-tinyfilemanager.github.io
+*/
+
+/**
+ * Attribution - Master Version
  * H3K | Tiny File Manager V2.4.1
  * CCP Programmers | ccpprogrammers@gmail.com
  * https://tinyfilemanager.github.io
  */
 
 //TFM version
-define('VERSION', '2.4.1');
+define('VERSION', '0.0.1');
 
 //Application Title
-define('APP_TITLE', 'Tiny File Manager');
+define('APP_TITLE', 'PiZero-UW - TFM');
 
-// --- EDIT BELOW CONFIGURATION CAREFULLY ---
-
-
-// Auth with login/password 
-// set true/false to enable/disable it
+// Auth with login/password (set true/false to enable/disable it)
 // Is independent from IP white- and blacklisting
-$use_auth = true;
+$use_auth = false;
 
-// Login user name and password
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
@@ -30,8 +55,7 @@ $auth_users = array(
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
-// Readonly users 
-// e.g. array('users', 'guest', ...)
+// Readonly users (username array)
 $readonly_users = array(
     'user'
 );
@@ -49,17 +73,18 @@ $highlightjs_style = 'vs';
 // Enable ace.js (https://ace.c9.io/) on view's page
 $edit_files = true;
 
-// Default timezone for date() and time()
-// Doc - http://php.net/manual/en/timezones.php
+// Default timezone for date() and time() - http://php.net/manual/en/timezones.php
 $default_timezone = 'Etc/UTC'; // UTC
 
 // Root path for file manager
 // use absolute path of directory i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
-$root_path = $_SERVER['DOCUMENT_ROOT'];
+// note the usb folder is a link to /mnt/usb_share
+$root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb';  // ***
+
 
 // Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
 // Will not working if $root_path will be outside of server document root
-$root_url = '';
+$root_url = '/tinyfilemanager/usb';  // ***
 
 // Server hostname. Can set manually if wrong
 $http_host = $_SERVER['HTTP_HOST'];
@@ -68,31 +93,27 @@ $http_host = $_SERVER['HTTP_HOST'];
 $iconv_input_encoding = 'UTF-8';
 
 // date() format for file modification date
-// Doc - https://www.php.net/manual/en/function.date.php
-$datetime_format = 'd.m.y H:i';
+// $datetime_format = 'd.m.y H:i';
+$datetime_format = 'Y/m/d H:i';
 
-// Allowed file extensions for create and rename files
-// e.g. 'txt,html,css,js'
-$allowed_file_extensions = '';
-
-// Allowed file extensions for upload files
-// e.g. 'gif,png,jpg,html,txt'
-$allowed_upload_extensions = '';
+// allowed file extensions for upload and rename
+// e.g. 'gif,png,jpg'
+$allowed_extensions = ''; 
 
 // Favicon path. This can be either a full url to an .PNG image, or a path based on the document root.
 // full path, e.g http://example.com/favicon.png
 // local path, e.g images/icons/favicon.png
 $favicon_path = '?img=favicon';
 
-// Files and folders to excluded from listing
-// e.g. array('myfile.html', 'personal-folder', '*.php', ...)
+// Array of files and folders excluded from listing
+// e.r array('myfile.html', 'personal-folder')
 $exclude_items = array();
 
 // Online office Docs Viewer
 // Availabe rules are 'google', 'microsoft' or false
 // google => View documents using Google Docs Viewer
 // microsoft => View documents using Microsoft Web Apps Viewer
-// false => disable online doc viewer
+// false => disable online dov viewer
 $online_viewer = 'google';
 
 // Sticky Nav bar
@@ -100,7 +121,7 @@ $online_viewer = 'google';
 // false => disable sticky header
 $sticky_navbar = true;
 
-// Maximum file upload size
+// max upload file size
 // Increase the following values in php.ini to work properly
 // memory_limit, upload_max_filesize, post_max_size
 define('MAX_UPLOAD_SIZE', '2048');
@@ -126,7 +147,9 @@ $ip_blacklist = array(
     '::'            // non-routable meta ipv6
 );
 
+
 // --- EDIT BELOW CAREFULLY OR DO NOT EDIT AT ALL ---
+
 
 // private key and session name to store to the session
 if ( !defined( 'FM_SESSION_ID')) {
@@ -273,6 +296,7 @@ if ($use_auth) {
         // Form
         unset($_SESSION[FM_SESSION_ID]['logged']);
         fm_show_header_login();
+        fm_show_message();
         ?>
         <section class="h-100">
             <div class="container h-100">
@@ -556,7 +580,6 @@ if (isset($_POST['ajax']) && !FM_READONLY) {
     }
 
     exit();
-}
 
 // Delete file / folder
 if (isset($_GET['del']) && !FM_READONLY) {
@@ -579,7 +602,6 @@ if (isset($_GET['del']) && !FM_READONLY) {
     }
     fm_redirect(FM_SELF_URL . '?p=' . urlencode(FM_PATH));
 }
-
 // Create folder
 if (isset($_GET['new']) && isset($_GET['type']) && !FM_READONLY) {
     $type = $_GET['type'];
@@ -958,8 +980,8 @@ if (isset($_GET['unzip']) && !FM_READONLY) {
                 $path .= '/' . $tofolder;
             }
         }
-
-        if($ext == "zip") {
+        
+if($ext == "zip") {
             $zipper = new FM_Zipper();
             $res = $zipper->unzip($zip_path, $path);
         } elseif ($ext == "tar") {
@@ -1293,20 +1315,6 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                     }
                     ?>
                     <div class="form-group row">
-                        <label for="js-err-rpt-1" class="col-sm-3 col-form-label"><?php echo lng('ErrorReporting') ?></label>
-                        <div class="col-sm-9">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary <?php echo getChecked($report_errors, 1, 'active') ?>">
-                                    <input type="radio" name="js-error-report" id="js-err-rpt-1" autocomplete="off" value="true" <?php echo getChecked($report_errors, 1, 'checked') ?> > ON
-                                </label>
-                                <label class="btn btn-secondary <?php echo getChecked($report_errors, '', 'active') ?>">
-                                    <input type="radio" name="js-error-report" id="js-err-rpt-0" autocomplete="off" value="false" <?php echo getChecked($report_errors, '', 'checked') ?> > OFF
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <label for="js-hdn-1" class="col-sm-3 col-form-label"><?php echo lng('ShowHiddenFiles') ?></label>
                         <div class="col-sm-9">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -1441,7 +1449,8 @@ if (isset($_GET['view'])) {
     $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
     $mime_type = fm_get_mime_type($file_path);
     $filesize = fm_get_filesize(filesize($file_path));
-
+   
+    $is_sewing = false; // ***       
     $is_zip = false;
     $is_gzip = false;
     $is_image = false;
@@ -1474,6 +1483,9 @@ if (isset($_GET['view'])) {
     } elseif (in_array($ext, fm_get_text_exts()) || substr($mime_type, 0, 4) == 'text' || in_array($mime_type, fm_get_text_mimes())) {
         $is_text = true;
         $content = file_get_contents($file_path);
+    }  elseif (in_array($ext, fm_get_sewing_exts())) {                           // ** Amended to include sewing machine extentions as scissors icon ** //
+        $is_sewing = true;
+        $view_title = 'Sewing File'; // Title shown against file name extentsion 
     }
 
     ?>
@@ -1604,7 +1616,16 @@ if (isset($_GET['view'])) {
                     $content = '<pre>' . fm_enc($content) . '</pre>';
                 }
                 echo $content;
+            // ***
+            } elseif ($is_sewing) {                                             // ** Amended to include sewing machine extentions ** //
+                if (in_array($ext, array('pes', 'dst', 'exp', 'jef', 'vp3', '10o', '100', 'bro', 'dat', 'dsb', 'dsz', 'emd', 'exy', 'fxy', 'gt', 'inb', 'jpx', 'ksm', 'max', 'mit', 'new', 'pcd', 'pcm', 'pcq', 'pcs', 'pec', 'phb', 'phc', 'sew', 'shv', 'stc', 'stx', 'tap', 'tbf', 'u01', 'xxx', 'zxy'))) {
+                     // Paths       Python-path      Script-path                                        Path to file    Path to temporary folder
+                     $cnvtstruct = "/usr/bin/python3 /home/pi/pyembroidery/pyembroidery-convert.py '" . $file_path . "' './tmp/ebi.svg' ";
+                     $resp = shell_exec($cnvtstruct);
+                     echo '<p><img src="' . fm_enc('./tmp/ebi.svg') . '"width="30%" height="30%"'  . '" alt="" class="preview-img"></p>';
+                }
             }
+
             ?>
         </div>
     </div>
@@ -1980,6 +2001,7 @@ $all_files_size = 0;
                 <li class="list-inline-item"> <a href="#/select-all" class="btn btn-small btn-outline-primary btn-2" onclick="select_all();return false;"><i class="fa fa-check-square"></i> <?php echo lng('SelectAll') ?> </a></li>
                 <li class="list-inline-item"><a href="#/unselect-all" class="btn btn-small btn-outline-primary btn-2" onclick="unselect_all();return false;"><i class="fa fa-window-close"></i> <?php echo lng('UnSelectAll') ?> </a></li>
                 <li class="list-inline-item"><a href="#/invert-all" class="btn btn-small btn-outline-primary btn-2" onclick="invert_all();return false;"><i class="fa fa-th-list"></i> <?php echo lng('InvertSelection') ?> </a></li>
+
                 <li class="list-inline-item"><input type="submit" class="hidden" name="delete" id="a-delete" value="Delete" onclick="return confirm('Delete selected files and folders?')">
                     <a href="javascript:document.getElementById('a-delete').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-trash"></i> <?php echo lng('Delete') ?> </a></li>
                 <li class="list-inline-item"><input type="submit" class="hidden" name="zip" id="a-zip" value="zip" onclick="return confirm('Create archive?')">
@@ -2537,6 +2559,10 @@ function fm_get_file_icon_class($path)
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
     switch ($ext) {
+        // ** Amended to include sewing machine extentions as scissors icon ** //
+        case 'pes':
+            $img = 'fa fa-scissors';
+            break;
         case 'ico':
         case 'gif':
         case 'jpg':
@@ -2701,6 +2727,16 @@ function fm_get_file_icon_class($path)
     }
 
     return $img;
+}
+
+/**
+ * Get sewing files extensions
+ * @return array
+ */
+// ** Amended to include sewing machine extentions ** //
+function fm_get_sewing_exts()
+{
+  return array(     'pes', 'dst', 'exp', 'jef', 'vp3', '10o', '100', 'bro', 'dat', 'dsb', 'dsz', 'emd', 'exy', 'fxy', 'gt', 'inb', 'jpx', 'ksm', 'max', 'mit', 'new', 'pcd', 'pcm', 'pcq', 'pcs', 'pec', 'phb', 'phc', 'sew', 'shv', 'stc', 'stx', 'tap', 'tbf', 'u01', 'xxx', 'zxy');
 }
 
 /**
@@ -3823,7 +3859,8 @@ function lng($txt) {
 /**
  * Get base64-encoded images
  * @return array
- */
+ *
+/
 function fm_get_images()
 {
     return array(
