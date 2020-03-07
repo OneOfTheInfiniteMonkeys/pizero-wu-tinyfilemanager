@@ -28,42 +28,36 @@ Tinyfilemanager is highly documented on the [wiki pages](https://github.com/oneo
 - pyemroidery
 - Fileinfo, iconv, zip, tar and mbstring extensions are strongly recommended.
 
-## How to use
-Installation is managed by PiZero-Wu installer.
+## How to install
+Installation is intended to be managed by PiZero-Wu installer.
 
 For manual install:
 
 a) Download the ZIP containing the latest version from master branch.
 
-
 b) Unzip the files into a folder in your webspace
 
-
 c) Check:
-   $root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb';
-   
-   set root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
-   
-   $root_url = '/tinyfilemanager/usb';
-
+```
+     $root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb';
+     set root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
+     $root_url = '/tinyfilemanager/usb';
+```
+Note '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privalidges. It is typically the web user account not the TinyFileManager user names that need access to the files.
 
 d) Create the temporary folder:
-
-   typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software
-   
+```
+   Typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software
    e.g. 
-   
    cd /var/www/html/tinyfilemanager
-   
    sudo mkdir tmp
-
+```
 
 To install the pyembroidery viewer use the following commands:
-
+```
 a) sudo cd /home/pi/
-
 b) sudo pip3 install pyembroidery
-
+```
 
 ### Passwords
 
