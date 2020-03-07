@@ -19,6 +19,8 @@
 #
 # The default ebi.svg rendering file in this folder is a rendering of Tux
 # from the included file Pinguin23.pes
+# Source for this file was:
+# http://free-penguin.org/
 # 
 # Following installation this text file may be removed if desired.
 #-------------------------------------------------------------------------------
