@@ -2,7 +2,10 @@
 //-------><--------><--------><--------><--------><--------><--------><-------->
 // Modified to support sewing file rendering by local python script pyembroidery
 //
+// Relevant upstream master changes integrated as of master commit 1501835 
+//
 // 2020-03-07 - GitHub test version
+//              Update login page .card-wrapper from upstream master
 // 2020-02-25 - Upgrade fork from master version 2.4.1
 // 2020-01-01 - OneOfTheInfiniteMonkeys fork
 // 
@@ -3240,7 +3243,7 @@ global $lang, $root_url, $favicon_path;
         .fm-login-page .btn.btn-block{ padding:12px 10px}
         .fm-login-page .footer{ margin:40px 0;color:#888;text-align:center}
         @media screen and (max-width:425px){ 
-            .fm-login-page .card-wrapper{ width:90%;margin:0 auto;margin-top:10%;}
+            .fm-login-page .card-wrapper{ width:360px;margin-top:10%;margin-left:auto;margin-right:auto;}
         }
         @media screen and (max-width:320px){ 
             .fm-login-page .card.fat{ padding:0}
