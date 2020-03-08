@@ -1,5 +1,15 @@
 # Copyright (c) 08 March 2020 All rights reserved OneOfTheInfiniteMonkeys
 # https://travis-ci.com
+# Travis CI Configuration File
+
+# Tell Travis CI we're using PHP
 language: php
+
 php: 5.5
 dist: trusty
+
+# Build matrix options
+matrix:
+  include:
+    - php: 5.5
+      env: WP_TRAVISCI=travis:phpunit
