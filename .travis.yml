@@ -8,8 +8,4 @@ language: php
 php: 5.5
 dist: trusty
 
-# Build matrix options
-matrix:
-  include:
-    - php: 5.5
-      env: WP_TRAVISCI=travis:phpunit
+script: phpunit --coverage-text
