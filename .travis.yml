@@ -1,1 +1,4 @@
+# Copyright (c) 08 March 2020 All rights reserved OneOfTheInfiniteMonkeys
+# https://travis-ci.com
 language: php
+php: 5.5
