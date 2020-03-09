@@ -4,6 +4,9 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 
+# As Travis CI build uses the Xenial dist by default, not Trusty apparently!
+dist: trusty
+
 # list any PHP version you want to test against
 php:
   # using major version aliases
