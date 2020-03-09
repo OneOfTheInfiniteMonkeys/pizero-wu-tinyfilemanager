@@ -293,7 +293,7 @@ if ($use_auth) {
                 fm_redirect(FM_SELF_URL);
             }
         } else {
-            fm_set_msg('password_hash not supported, Upgrade PHP version', 'error');;
+            fm_set_msg('password_hash not supported, Upgrade PHP version', 'error');
         }
     } else {
         // Form
