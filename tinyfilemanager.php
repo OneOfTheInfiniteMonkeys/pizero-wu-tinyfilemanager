@@ -3877,4 +3877,6 @@ function fm_get_images()
     );
 }
 
-?>
+// Removed End Tag
+// ?>
+       
