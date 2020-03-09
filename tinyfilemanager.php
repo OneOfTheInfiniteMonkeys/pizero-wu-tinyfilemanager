@@ -3863,7 +3863,7 @@ function lng($txt) {
  * Get base64-encoded images
  * @return array
  *
-/
+*/
 function fm_get_images()
 {
     return array(
