@@ -24,9 +24,9 @@ php:
   - hhvm
 
 # optionally specify a list of environments, for example to test different RDBMS
-env:
-  - DB=mysql
-  - DB=pgsql
+#env:
+#  - DB=mysql
+#  - DB=pgsql
 
 # optionally set up exclusions and allowed failures in the matrix
 matrix:
