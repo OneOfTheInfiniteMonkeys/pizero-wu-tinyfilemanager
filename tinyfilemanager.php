@@ -3762,7 +3762,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
 </body>
 </html>
 <?php
-// }
+}
 
 /**
  * Show image
