@@ -43,7 +43,7 @@ c) Check:
      set root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
      $root_url = '/tinyfilemanager/usb';
 ```
-Note '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privalidges. It is typically the web user account not the TinyFileManager user names that need access to the files.
+Note '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privalidges. It is typically the web user account not the TinyFileManager user names that need access to the files. The extension is transprent to normal operation of Tinyfilemanager.
 
 d) Create the temporary folder:
 ```
