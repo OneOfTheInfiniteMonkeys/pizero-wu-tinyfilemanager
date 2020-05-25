@@ -1,27 +1,15 @@
 <?php
 //-------><--------><--------><--------><--------><--------><--------><-------->
-// Modified to support sewing file rendering by local python script pyembroidery
-//
-// Relevant upstream master changes integrated as of master commit 1501835 
-//
-// 2020-03-07 - GitHub test version
-//              Update login page .card-wrapper from upstream master
-// 2020-02-25 - Upgrade fork from master version 2.4.1
-// 2020-01-01 - OneOfTheInfiniteMonkeys fork
+// Modified to support sewing file rendering by local python script pyembrodery
+// 01 Jan 2020 - OneOfTheInfiniteMonkeys Copyright (c) to extent permitted by underlying licence
+// 25 Feb 2020 - Upgrade to 2.4.1
 // 
-// Easiest route to locate modifications from master in this fork - search for '// ***'
+// Easiest route to locate modificaitons is // ***
 // Search for 'is_sewing' to locate modified code sections
 // 
-// Modified default time and date format to yyyy/mm/dd hh:mm i.e. largest to smallest in file view
+// Modified default time and date format to yyyy/mm/dd hh:mm i.e. largest to smallest
 // Modified default hide_Cols from false to true so permissions and user:group not shown
 // Default app title changed
-// Default file paths set 
-//
-// For rendering of sewing files the following are required:
-//   Script:
-//   /home/pi/pyembroidery/pyembroidery-convert.py
-//   Folder - read write access:
-//   ./tmp/ebi.svg'
 //
 //------------------------------------------------------------------------------
 
@@ -29,20 +17,13 @@
 $CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":true,"calc_folder":false}'; // ***
 
 /**
- * PiZero-WU | Tiny File Manager V0.0.1
- * oneoftheinfinitemonkeys@gmail.com
- * https://pizero-wu-tinyfilemanager.github.io
-*/
-
-/**
- * Attribution - Master Version
  * H3K | Tiny File Manager V2.4.1
  * CCP Programmers | ccpprogrammers@gmail.com
  * https://tinyfilemanager.github.io
  */
 
 //TFM version
-define('VERSION', '0.0.1');
+define('VERSION', '2.4.1');
 
 //Application Title
 define('APP_TITLE', 'PiZero-UW - TFM');
@@ -51,6 +32,7 @@ define('APP_TITLE', 'PiZero-UW - TFM');
 // Is independent from IP white- and blacklisting
 $use_auth = false;
 
+// Login user name and password							   
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
@@ -58,7 +40,7 @@ $auth_users = array(
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
-// Readonly users (username array)
+// Readonly users (username array)							
 $readonly_users = array(
     'user'
 );
@@ -82,12 +64,13 @@ $default_timezone = 'Etc/UTC'; // UTC
 // Root path for file manager
 // use absolute path of directory i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
 // note the usb folder is a link to /mnt/usb_share
-$root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb';  // ***
+$root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfilemanager/usb/usb_share';  // ***
 
 
 // Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
 // Will not working if $root_path will be outside of server document root
-$root_url = '/tinyfilemanager/usb';  // ***
+$root_url = '/tinyfilemanager/usb/usb_share';  // ***
+//$root_url = '/mnt/usb_share';
 
 // Server hostname. Can set manually if wrong
 $http_host = $_SERVER['HTTP_HOST'];
@@ -101,7 +84,7 @@ $datetime_format = 'Y/m/d H:i';
 
 // allowed file extensions for upload and rename
 // e.g. 'gif,png,jpg'
-$allowed_extensions = ''; 
+$allowed_extensions = '';
 
 // Favicon path. This can be either a full url to an .PNG image, or a path based on the document root.
 // full path, e.g http://example.com/favicon.png
@@ -116,7 +99,7 @@ $exclude_items = array();
 // Availabe rules are 'google', 'microsoft' or false
 // google => View documents using Google Docs Viewer
 // microsoft => View documents using Microsoft Web Apps Viewer
-// false => disable online dov viewer
+// false => disable online doc viewer
 $online_viewer = 'google';
 
 // Sticky Nav bar
@@ -293,7 +276,7 @@ if ($use_auth) {
                 fm_redirect(FM_SELF_URL);
             }
         } else {
-            fm_set_msg('password_hash not supported, Upgrade PHP version', 'error');
+            fm_set_msg('password_hash not supported, Upgrade PHP version', 'error');;
         }
     } else {
         // Form
@@ -583,6 +566,7 @@ if (isset($_POST['ajax']) && !FM_READONLY) {
     }
 
     exit();
+}
 
 // Delete file / folder
 if (isset($_GET['del']) && !FM_READONLY) {
@@ -1625,7 +1609,12 @@ if (isset($_GET['view'])) {
                      // Paths       Python-path      Script-path                                        Path to file    Path to temporary folder
                      $cnvtstruct = "/usr/bin/python3 /home/pi/pyembroidery/pyembroidery-convert.py '" . $file_path . "' './tmp/ebi.svg' ";
                      $resp = shell_exec($cnvtstruct);
+//                   echo $cnvtstruct;  // For debugging
+//                   echo ">" . $resp;  // For debugging
+//                   echo '<iframe src="./tmp/ebi.svg' . '" frameborder="no" style="width:100%;min-height:460px"></iframe>';
                      echo '<p><img src="' . fm_enc('./tmp/ebi.svg') . '"width="30%" height="30%"'  . '" alt="" class="preview-img"></p>';
+
+//                   echo '<p><img src="' . fm_enc($file_url) . '" alt="" class="preview-img"></p>';
                 }
             }
 
@@ -3243,7 +3232,7 @@ global $lang, $root_url, $favicon_path;
         .fm-login-page .btn.btn-block{ padding:12px 10px}
         .fm-login-page .footer{ margin:40px 0;color:#888;text-align:center}
         @media screen and (max-width:425px){ 
-            .fm-login-page .card-wrapper{ width:360px;margin-top:10%;margin-left:auto;margin-right:auto;}
+            .fm-login-page .card-wrapper{ width:90%;margin:0 auto;margin-top:10%;}
         }
         @media screen and (max-width:320px){ 
             .fm-login-page .card.fat{ padding:0}
@@ -3878,4 +3867,3 @@ function fm_get_images()
 }
 
 ?>
-       
