@@ -49,24 +49,26 @@ c) Check the following seeings in the tinyfilemanager.php file (extracted in the
 Note '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privalidges. It is typically the web user account not the TinyFileManager user names that need access to the files. The extension is transprent to normal operation of Tinyfilemanager.
 
 d) Create the temporary folder:
+   Typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software.
+   e.g.
 ```
-   Typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software
-   e.g. 
    cd /var/www/html/tinyfilemanager
    sudo mkdir tmp
 ```
 e) Create link to files to be shared
-```
    Create a link in the Tiny File Manager Folder to the files to be accessed by TinyFileManager.
-   If the files are located at '/mnt/usb_share'
-   If the '/mnt/usb_share' does not exists use the following:
-   sudo mkdir /mnt/usb_share
    
-   Typically to link the shared location into tinyfilemanger use the following:
+   If the '/mnt/usb_share' does not exists use the following command to create it:
+```
+   sudo mkdir /mnt/usb_share
+```   
+   Typically to link the shared file location into tinyfilemanger use the following:
+```
    cd /var/www/html/tinyfilemanager
    sudo ln -s /mnt/usb_share usb
 ```
 The commands above link together the sub folder /var/www/html/tinyfilemanager/usb to the shared drive space at /mnt/usb_share.
+
 
 To install the pyembroidery viewer use the following commands for Python version 3 and a Raspberry Pi:
 ```
