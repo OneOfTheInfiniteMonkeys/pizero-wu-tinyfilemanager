@@ -72,8 +72,8 @@ The commands above link together the sub folder /var/www/html/tinyfilemanager/us
 
 To install the pyembroidery viewer use the following commands for Python version 3 and a Raspberry Pi:
 ```
-a) sudo cd /home/pi/
-b) sudo pip3 install pyembroidery
+   sudo cd /home/pi/
+   sudo pip3 install pyembroidery
 ```
 
 ### Passwords
