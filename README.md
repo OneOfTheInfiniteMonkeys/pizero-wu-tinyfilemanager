@@ -1,23 +1,22 @@
 # PiZero-WU Tiny File Manager
 
-<a href="https://en.wikipedia.org/wiki/php"><img src="https://img.shields.io/static/v1?label=php&message=^5.5&color=blue&style=flat-square"></a>
-[![Live demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg?style=flat-square)](https://pizero-wu-tinyfilemanager.github.io/demo/)
-[![Live demo](https://img.shields.io/badge/Help-Docs-lightgrey.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/wiki)
 [![GitHub Release](https://img.shields.io/github/v/release/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager?include_prereleases&style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/releases)
 [![GitHub License](https://img.shields.io/github/license/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager.svg?style=flat-square)](https://github.com/OneOfTheInfiniteMonkeys/pizero-wu-tinyfilemanager/blob/master/LICENSE) 
+<img src="https://img.shields.io/badge/FIle%20Types-PES%20Sewing-brightgreen?&style=flat-square"/>
+<a href="https://en.wikipedia.org/wiki/php"><img src="https://img.shields.io/static/v1?label=php&message=^5.5&color=blue&style=flat-square"/></a>
 
-> Based on TinyFileManager by prasathmani, **PiZero-WU TinyFileManager** is simple web based file manager that is a small, fast, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
+>Based on TinyFileManager by prasathmani, **PiZero-WU TinyFileManager** is simple web based file manager that is a small, fast, multi-language ready web application for storing, uploading, editing and managing files and folders online via web browser. The Application runs on PHP 5.5+.
 
->The Tiny File Manager PiZero-WU fork includes settings, extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures for PiZero-WU. The pyembroidery extension enables embroidery files to be rendered (viewed) within Tiny File Manager from this fork. See the demonstration below:
+>The Tiny File Manager PiZero-WU fork includes settings, extensions and code to permit viewing of special file types rendered by an additional support routine pyembroidery and configuration specific fetaures for PiZero-WU. The <a href="https://pypi.org/project/pyembroidery/">pyembroidery</a> extension enables embroidery files to be rendered (viewed) within Tiny File Manager from this fork. See the demonstration below:
 
 ## Demo
-[Demo](https://pizero-wu-tinyfilemanager.github.io/demo/)
+See graphic below for short demonstration
 
  Login Details : admin/admin@123 | user/12345
 
 
 ## Documentation
-Tinyfilemanager is highly documented on the [wiki pages](https://github.com/oneoftheinfinitemonkeys/pizero-wu-tinyfilemanager/wiki).
+Tinyfilemanager remains to have documentation created. Operation is largely discoverable conforming where possible to functional norms.
 
 
 [![Tiny File Manager](screenshot.gif)](screenshot.gif)
@@ -46,16 +45,18 @@ c) Check the following seeings in the tinyfilemanager.php file (extracted in the
 ...     
      $root_url = '/tinyfilemanager/usb';
 ```
-Note '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privalidges. It is typically the web user account, not the TinyFileManager user names that need access to the files. The extension is transparent to normal operation of Tinyfilemanager.
+<strong>Note</strong> '/tinyfilemanager/usb' is a **link** to the folder containing files to be managed with TinyFileManager. The link and files will need the appropriate access privaliges. It is typically the web user account (e.g. www-data), not the TinyFileManager user names that need access to the files. The extension is transparent to normal operation of Tinyfilemanager.
 
-d) Create the temporary folder:
+d) Create the temporary folder.
+
    Typically in the /var/www/html/tinyfilemanager folder to be used by the pyembroidery rendering software.
    e.g.
 ```
    cd /var/www/html/tinyfilemanager
    sudo mkdir tmp
 ```
-e) Create a link to files to be shared
+e) Create a link to files to be shared.
+
    Create a link in the Tiny File Manager Folder to the files to be accessed by TinyFileManager.
    
    If the '/mnt/usb_share' does not exists use the following command to create it:
@@ -75,6 +76,7 @@ To install the pyembroidery viewer use the following commands for Python version
    sudo cd /home/pi/
    sudo pip3 install pyembroidery
 ```
+
 
 ### Passwords
 
